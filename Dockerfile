@@ -3,7 +3,6 @@ FROM node:8.1-alpine
 COPY . /app
 WORKDIR /app
 
-RUN chmod +x dep.sh && \
-    ./dep.sh
+RUN npm install --global yarn && npm install && npm run build && yarn global add serve
 
 CMD ["serve", "-s", "build"]
