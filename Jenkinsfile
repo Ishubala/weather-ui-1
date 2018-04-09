@@ -31,7 +31,7 @@ node {
         sh "gcloud docker -- push us.gcr.io/devops-200301/weather-ui:latest"
     }
     
-     stage('Check Connection to k8s') {
+     stage('Check And Deploy to K8s') {
          withKubeConfig(caCertificate: '', credentialsId: 'kubernetes_gcp_raw', serverUrl: 'https://35.193.109.253') {
              sh 'kubectl get pods'
              sh 'kubectl delete -f deployment.yaml'
@@ -40,11 +40,4 @@ node {
              sh 'kubectl create -f service.yaml'
         }
     }  
-    
-    stage('Deploy to kubernetes') {
-        kubernetesDeploy(kubeconfigId: 'kubernetes_GCP',             
-                 configs: '**/*.yaml',
-                 enableConfigSubstitution: true
-        )
-    }
 }
