@@ -34,6 +34,8 @@ node {
      stage('Check Connection to k8s') {
          withKubeConfig(caCertificate: '', credentialsId: 'kubernetes_gcp_raw', serverUrl: 'https://35.193.109.253') {
              sh 'kubectl get pods'
+             sh 'kubectl delete -f deployment.yaml'
+             sh 'kubectl delete -f service.yaml'
              sh 'kubectl create -f deployment.yaml'
              sh 'kubectl create -f service.yaml'
         }
