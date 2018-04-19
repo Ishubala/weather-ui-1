@@ -46,7 +46,7 @@ export const setPosition = (lat, long) => dispatch => {
 
 const fetchForecasts = address => dispatch => {
     dispatch(requestForecast(address))
-    return fetch(`http://weather-proxy/latlong/${address}`)
+    return fetch(`http://35.194.8.91/latlong/${address}`)
       .then(response => response.json())
       .then(json => {
           console.log('latlong:', json);
