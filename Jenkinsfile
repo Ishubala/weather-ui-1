@@ -7,7 +7,7 @@ node {
         checkout scm
     }
     
-    Stage ('Code Quality')
+    Stage('Code Quality')
     {
     }
 
