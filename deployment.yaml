@@ -28,7 +28,7 @@ spec:
       name: weather-ui
     spec:
       containers:
-      - image: us.gcr.io/devops-200301/weather-ui:latest
+      - image: nginx
         imagePullPolicy: Always
         name: weather-ui
         ports:
